@@ -22,3 +22,19 @@ export const deleteCourse = async (courseId) =>
     })
     return await response.json()
 }
+
+export const findCourseById(courseId) {
+    return fetch(`${API_URL}/${courseId}`)
+        .then(response => response.json())
+}
+
+export const updateCourse(courseId, course) {
+    return fetch(`${API_URL}/${courseId}`, {
+        method: 'PUT',
+        body: JSON.stringify(course),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+}
