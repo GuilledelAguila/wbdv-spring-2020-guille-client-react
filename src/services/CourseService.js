@@ -23,13 +23,13 @@ export const deleteCourse = async (courseId) =>
     return await response.json()
 }
 
-export const findCourseById(courseId) {
-    return fetch(`${API_URL}/${courseId}`)
+export const findCourseById = (courseId) =>
+    fetch(`${API_URL}/${courseId}`)
         .then(response => response.json())
-}
 
-export const updateCourse(courseId, course) {
-    return fetch(`${API_URL}/${courseId}`, {
+
+export const updateCourse = (courseId, course) =>
+    fetch(`${API_URL}/${courseId}`, {
         method: 'PUT',
         body: JSON.stringify(course),
         headers: {
@@ -37,4 +37,4 @@ export const updateCourse(courseId, course) {
         }
     })
         .then(response => response.json())
-}
+
