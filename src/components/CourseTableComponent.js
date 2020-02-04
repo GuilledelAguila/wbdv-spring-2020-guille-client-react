@@ -2,13 +2,12 @@ import React from "react";
 import CourseRow from "./CourseRow";
 import CourseTableHeaderComponent from "./CourseTableHeaderComponent";
 
-const CourseTableComponent = ({courses, deleteCourse, showEditor, state, selectedRow, editingRow, editRow}) =>
-
-
-
-    <div>
-        <table className = "table table-hover" id = "mytable">
-        <CourseTableHeaderComponent/>
+const CourseTableComponent = ({courses, deleteCourse, showEditor, state, selectedRow, editingRow, editRow, toggle}) =>
+    <table className = "table table-hover" >
+            <CourseTableHeaderComponent
+                layout={state.layout}
+                toggle={toggle}
+                />
         <tbody >
             {
                 courses.map(function(course,index){
@@ -27,8 +26,8 @@ const CourseTableComponent = ({courses, deleteCourse, showEditor, state, selecte
                 })
             }
         </tbody>
-        </table>
-    </div>
+    </table>
+
 
 
 export default CourseTableComponent

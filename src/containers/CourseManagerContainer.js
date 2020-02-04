@@ -4,6 +4,7 @@ import CourseGridComponent from "../components/CourseGridComponent";
 import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
 import CourseNavComponent from "../components/CourseNavComponent";
 import {findAllCourses, deleteCourse, createCourse, findCourseById, updateCourse} from "../services/CourseService";
+import CourseTableHeaderComponent from "../components/CourseTableHeaderComponent";
 
 
 
@@ -36,8 +37,13 @@ class CourseManagerContainer extends React.Component {
         if (index === this.state.editingRow) {
             if(document.getElementById("course-edit").value) {
                 course.title = document.getElementById("course-edit").value
+                updateCourse(course._id, course)
+                    .then(()=>
+                        this.setState({
+                            editingRow : -1
+                        }))
             }
-            updateCourse(course._id, course)
+
             this.setState({
                 editingRow : -1
             })
@@ -136,8 +142,11 @@ class CourseManagerContainer extends React.Component {
                         <CourseNavComponent
                             state = {this.state}
                             addCourse = {this.addCourse}
-                            updateForm = {this.updateForm}/>
+                            updateForm = {this.updateForm}
+                        />
                         <button onClick={this.toggle}>Toggle</button>
+
+
 
 
                         {
@@ -148,13 +157,16 @@ class CourseManagerContainer extends React.Component {
                                 courses={this.state.courses}
                                 state={this.state}
                                 selectedRow={this.selectedRow}
-                                editingRow={this.editingRow}/>
+                                editingRow={this.editingRow}
+                                toggle={this.toggle}/>
                         }
+
                         {
                             this.state.layout === 'grid'
                             && <CourseGridComponent
                                 courses={this.state.courses}/>
                         }
+
                     </div>
                 }
 

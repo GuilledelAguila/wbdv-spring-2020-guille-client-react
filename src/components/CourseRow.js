@@ -11,12 +11,13 @@ class CourseRow extends React.Component {
                         : { background: 'white' }
                 }
                 >
-                <th>
+                <th className="clickable" onClick={() => this.props.selectedRow(this.props.index)}>
                     <i className="fas fa-file-alt wbdv-row wbdv-icon"/>
-                    {this.props.state.editingRow !== this.props.index &&
+                    {
+                        this.props.state.editingRow !== this.props.index &&
                     <label className="wbdv-row wbdv-title clickable"
-                           onClick={() => this.props.selectedRow(this.props.index)}
-                    >{this.props.course.title}</label>}
+                    >{this.props.course.title}</label>
+                    }
                     {this.props.state.editingRow === this.props.index &&
                     <input className="" id="course-edit"/>}
                 </th>
