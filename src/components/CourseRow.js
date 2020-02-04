@@ -7,7 +7,7 @@ class CourseRow extends React.Component {
             <tr className="wbdv-row wbdv-course"
                 style={
                     this.props.state.activeRow === this.props.index
-                        ? { background: "#0f64f2" }
+                        ? { background: "#0f64f2", color: 'white' }
                         : { background: 'white' }
                 }
                 >

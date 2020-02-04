@@ -34,7 +34,9 @@ class CourseManagerContainer extends React.Component {
     editingRow = (index, course) => {
         //Remove the if statement if you don't want to unselect an already selected item
         if (index === this.state.editingRow) {
-            course.title = document.getElementById("course-edit").value
+            if(document.getElementById("course-edit").value) {
+                course.title = document.getElementById("course-edit").value
+            }
             updateCourse(course._id, course)
             this.setState({
                 editingRow : -1
