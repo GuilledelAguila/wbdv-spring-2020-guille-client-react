@@ -1,7 +1,7 @@
 import React from "react";
 
-class CourseRow extends React.Component {
 
+class CourseRowComponent extends React.Component {
     render() {
         return(
             <tr className="wbdv-row wbdv-course"
@@ -15,11 +15,11 @@ class CourseRow extends React.Component {
                     <i className="fas fa-file-alt wbdv-row wbdv-icon"/>
                     {
                         this.props.state.editingRow !== this.props.index &&
-                    <label className="wbdv-row wbdv-title clickable"
-                    >{this.props.course.title}</label>
+                        <a onClick={this.props.showEditor} className="wbdv-row wbdv-title clickable"
+                        >{this.props.course.title}</a>
                     }
                     {this.props.state.editingRow === this.props.index &&
-                    <input className="" id="course-edit"/>}
+                    <input className="" id="course-edit" placeholder={this.props.course.title}/>}
                 </th>
                 <td className="wbdv-row wbdv-owner tablecollapseownedby">me</td>
                 <td className="wbdv-row wbdv-modified-date tablecollapselastmodified">11:45 AM</td>
@@ -56,4 +56,4 @@ class CourseRow extends React.Component {
     }
 }
 
-export default CourseRow
+export default CourseRowComponent

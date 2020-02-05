@@ -1,10 +1,24 @@
 import React from "react";
 
 const TopicPills = () =>
-<ul>
-    <li>Topic 1</li>
-    <li>Topic 2</li>
-    <li>Topic 3</li>
-</ul>
+    <ul className="nav nav-pills wbdv-topic-pill-list">
+        <li className="nav-item">
+            <a className="nav-link wbdv-topic-pill" href="#">Topic 1</a>
+        </li>
+        <li className="nav-item">
+            <a className="nav-link wbdv-topic-pill" href="#">Topic 2</a>
+        </li>
+        <li className="nav-item">
+            <a className="nav-link wbdv-topic-pill" href="#">Topic 3</a>
+        </li>
+        <li className="nav-item">
+            <a className="nav-link wbdv-topic-pill" href="#">Topic 4</a>
+        </li>
+        <li className="nav-item">
+            <button className="btn wbdv-topic-add-btn">
+                <i className="fas fa-plus"></i>
+            </button>
+        </li>
+    </ul>
 
 export default TopicPills

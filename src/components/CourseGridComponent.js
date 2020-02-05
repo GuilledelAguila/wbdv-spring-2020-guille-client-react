@@ -1,12 +1,42 @@
 import React from "react";
+import CourseTableHeaderComponent from "./CourseTableHeaderComponent";
+import CourseCardComponent from "./CourseCardComponent";
 
-const CourseGridComponent = () =>
+
+const CourseGridComponent = ({courses, deleteCourse, showEditor, state, selectedRow, editingRow, editRow, toggle, rows, cols}) =>
     <React.Fragment>
-    <h2>Course Grid Component</h2>
+        <table className="table table-hover">
+            <CourseTableHeaderComponent
+                layout={state.layout}
+                toggle={toggle}
+            />
+        </table>
 
-        <button className="btn wbdv-button wbdv-list-layout">
-            <i className="fas fa-list"/>
-        </button>
+        <div className="container">
+            <div className="row">
+            {
+                    courses.map((course, index) => {
+                            return (
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 course-card-col">
+                                    <CourseCardComponent
+                                        course={course}
+                                        showEditor={showEditor}
+                                        deleteCourse={deleteCourse}
+                                        state={state}
+                                        selectedRow={selectedRow}
+                                        editingRow={editingRow}
+                                        index={index}
+                                        editRow={editRow}
+                                    />
+                                </div>
+                            )
+                        }
+                    )
+                }
+            </div>
+        </div>
 
-    </React.Fragment>
+
+    </React.Fragment>;
+
 export default CourseGridComponent

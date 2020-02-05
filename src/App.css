@@ -58,22 +58,25 @@
 
 .wbdv-delete{
   color: white;
-  padding: 0;
+  float: right;
+
 }
 .wbdv-edit{
   color: white;
-  padding: 0;
+  float: right;
+
 }
 .wbdv-save{
   color: white;
-  padding: 0;
+  float: right;
 }
 .wbdv-button{
-  margin-right: 8px;
+  margin-right: 7px;
   margin-bottom: 0;
   margin-top: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0;
+  margin-left: 2px;
+
 
 }
 #course-edit{
@@ -93,6 +96,8 @@
 
 .wbdv-owner{
   margin-bottom: 0;
+  font-size: large;
+
 }
 .wbdv-modified-date{
   margin-bottom: 0;
@@ -101,5 +106,198 @@
 .wbdv-header{
   margin-bottom: 0;
   padding: 0;
+
 }
 
+.wbdv-sort{
+  float: right;
+}
+
+.wbdv-list-layout{
+  float: right;
+
+}
+.wbdv-grid-layout{
+  float: right;
+}
+
+.wbdv-grid-header{
+  height: 45px;
+  font-size: large;
+  font-weight: bold;
+  margin-top: 14px;
+}
+
+.wbdv-card-title{
+  color: black;
+}
+.course-Card{
+  margin: 10px;
+  border-style: solid;
+  border-width: 2px;
+  height: 70px;
+  padding: 5px;
+}
+
+.wbdv-icon{
+  padding-left: 7px ;
+}
+.wbdv-card-buttons{
+  height: 25px;
+}
+.course-card-col{
+  padding: 0;
+}
+.course-edit-card{
+  width: 165px;
+}
+
+.nav{
+  background-color: #4b5054;
+  border: 0px;
+}
+.container-fluid{
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+
+}
+
+.nav-link{
+  color: white;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.nav-link:hover{
+  color: white;
+  border: 0px;
+  background-color: #363b3e;
+}
+
+.navbar-brand{
+  color: white;
+  text-align: left;
+
+}
+.wbdv-course-editor.wbdv-close{
+  color: white ;
+}
+.wbdv-course-editor.wbdv-close:hover{
+  background-color: #363b3e;
+}
+.nav-link.wbdv-new-page-btn{
+  color: white;
+
+
+}
+.nav-link.wbdv-new-page-btn:hover{
+  color: white;
+
+}
+
+.wbdv-module-item{
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+  background-color: #4b5054;
+  color: white;
+}
+.wbdv-module-item-title{
+
+
+}
+.colstretch{
+  background-color: #363b3e;
+  height: 100%;
+
+}
+.wbdv-module-item-delete-btn{
+  color: white;
+  float: right;
+  padding: 0px;
+
+}
+.wbdv-module-item-add-btn{
+  float: right;
+  margin-right: 10px;
+  color: white;
+  font-size: x-large;
+}
+.wbdv-module-item-add-btn:hover{
+  color: white;
+  font-size: xx-large;
+}
+.wbdv-module-item-delete-btn:hover{
+  color: white;
+  font-size: larger;
+}
+
+.mycol{
+  padding: 0px;
+}
+.last-row{
+  min-height: 100vh;
+  height: 100%;
+}
+.wbdv-topic-pill-list{
+  background-color: white;
+}
+.wbdv-topic-pill{
+  background-color:  #4b5054;
+  margin-left: 30px;
+  margin-top: 20px;
+
+}
+.wbdv-topic-add-btn{
+  color: white;
+  background-color: #4b5054;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+.wbdv-topic-add-btn:hover{
+  color: white;
+  font-size: large;
+}
+
+.wbdv-topic-save-btn{
+  background-color: green;
+  border: 0px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.wbdv-topic-toggle-btn{
+  background-color: white;
+  margin-right: 20px;
+  font-size: larger;
+  font-weight: bold;
+}
+.wbdv-widget-btn{
+  margin-left: 10px;
+}
+.wbdv-widget-btn.wbdv-widget-arrow-up-btn{
+  background-color: orange;
+  border: 0px;
+}
+.wbdv-widget-btn.wbdv-widget-heading-btn{
+  color: black;
+  background-color: white;
+}
+
+.wbdv-widget-btn.wbdv-widget-cross-btn{
+  background-color: red;
+  border: 0px;
+}
+.wbdv-widget-btn.wbdv-widget-cross-btn:hover{
+  background-color: red;
+  border: 0px;
+}
+.wbdv-widget-add-btn.wbdv-widget-btn{
+  background-color: white;
+  color: red;
+  border: 0px;
+  font-size: xx-large;
+  float: right;
+}

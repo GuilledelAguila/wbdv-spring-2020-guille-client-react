@@ -15,19 +15,29 @@ class CourseManagerContainer extends React.Component {
         newCourseTitle: 'New Course Title',
         courses: [],
         activeRow: -1,
-        editingRow:-1
+        editingRow:-1,
+        rowCards: []
     };
 
     selectedRow = (index) => {
         //Remove the if statement if you don't want to unselect an already selected item
-        if (index === this.state.activeRow) {
+        if (index === this.state.activeRow && index !== this.state.editingRow) {
             this.setState({
                 activeRow : -1,
                 editingRow : -1
             })
-        } else {
+        }
+        else if (index !== this.state.activeRow && this.state.editingRow !== -1){
             this.setState({
-                activeRow : index
+                activeRow : index,
+                editingRow : -1
+            })
+        }
+
+        else {
+            this.setState({
+                activeRow : index,
+
             })
         }
     };
@@ -63,9 +73,9 @@ class CourseManagerContainer extends React.Component {
 
     
 
-    toggle = () =>
+    toggle = () => {
         this.setState(prevState => {
-            if(prevState.layout === 'table') {
+            if (prevState.layout === 'table') {
                 return ({
                     layout: 'grid'
                 })
@@ -75,6 +85,11 @@ class CourseManagerContainer extends React.Component {
                 })
             }
         });
+        this.setState({
+            activeRow: -1
+        })
+    };
+
 
 
 
@@ -144,10 +159,6 @@ class CourseManagerContainer extends React.Component {
                             addCourse = {this.addCourse}
                             updateForm = {this.updateForm}
                         />
-                        <button onClick={this.toggle}>Toggle</button>
-
-
-
 
                         {
                             this.state.layout === 'table' &&
@@ -164,7 +175,13 @@ class CourseManagerContainer extends React.Component {
                         {
                             this.state.layout === 'grid'
                             && <CourseGridComponent
-                                courses={this.state.courses}/>
+                                showEditor={this.showEditor}
+                                deleteCourse={this.deleteCourse}
+                                courses={this.state.courses}
+                                state={this.state}
+                                selectedRow={this.selectedRow}
+                                editingRow={this.editingRow}
+                                toggle={this.toggle}/>
                         }
 
                     </div>

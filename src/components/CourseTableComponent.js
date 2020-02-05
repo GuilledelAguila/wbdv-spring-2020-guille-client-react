@@ -1,5 +1,5 @@
 import React from "react";
-import CourseRow from "./CourseRow";
+import CourseRowComponent from "./CourseRowComponent";
 import CourseTableHeaderComponent from "./CourseTableHeaderComponent";
 
 const CourseTableComponent = ({courses, deleteCourse, showEditor, state, selectedRow, editingRow, editRow, toggle}) =>
@@ -12,7 +12,7 @@ const CourseTableComponent = ({courses, deleteCourse, showEditor, state, selecte
             {
                 courses.map(function(course,index){
                     return (
-                        <CourseRow
+                        <CourseRowComponent
                             course={course}
                             showEditor={showEditor}
                             deleteCourse={deleteCourse}
