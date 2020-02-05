@@ -16,29 +16,29 @@ class CourseManagerContainer extends React.Component {
         courses: [],
         activeRow: -1,
         editingRow:-1,
-        rowCards: []
+        rowCards: [],
+        courseEditor: -1
     };
 
-    selectedRow = (index) => {
+    selectedRow = (index, e) => {
         //Remove the if statement if you don't want to unselect an already selected item
-        if (index === this.state.activeRow && index !== this.state.editingRow) {
-            this.setState({
-                activeRow : -1,
-                editingRow : -1
-            })
-        }
-        else if (index !== this.state.activeRow && this.state.editingRow !== -1){
-            this.setState({
-                activeRow : index,
-                editingRow : -1
-            })
-        }
+        if (e.target.tagName === 'TD' || e.target.tagName === 'DIV' ) {
+            if (index === this.state.activeRow && index !== this.state.editingRow) {
+                this.setState({
+                    activeRow: -1,
+                    editingRow: -1
+                })
+            } else if (index !== this.state.activeRow && this.state.editingRow !== -1) {
+                this.setState({
+                    activeRow: index,
+                    editingRow: -1
+                })
+            } else {
+                this.setState({
+                    activeRow: index,
 
-        else {
-            this.setState({
-                activeRow : index,
-
-            })
+                })
+            }
         }
     };
 
@@ -59,7 +59,8 @@ class CourseManagerContainer extends React.Component {
             })
         } else {
             this.setState({
-                editingRow : index
+                editingRow : index,
+                newCourseTitle : course.title
             })
         }
     };
@@ -123,13 +124,15 @@ class CourseManagerContainer extends React.Component {
                 })
             })
         );
-        this.state.newCourseTitle = "New Course Title";
+
         document.getElementById("wbdv-new-course").value=""
     };
 
-    showEditor = () =>
+    showEditor = (index) =>
         this.setState({
-            showEditor: true
+            showEditor: true,
+            courseEditor: index,
+            activeRow:index
         });
 
     hideEditor = () =>
@@ -141,6 +144,8 @@ class CourseManagerContainer extends React.Component {
         this.setState(newState)
     };
 
+
+
     render() {
         return(
             <div>
@@ -148,7 +153,8 @@ class CourseManagerContainer extends React.Component {
                 {
                     this.state.showEditor &&
                     <CourseEditorComponent
-                        hideEditor={this.hideEditor}/>
+                        hideEditor={this.hideEditor}
+                        course={this.state.courses[this.state.courseEditor]}/>
                 }
 
                 {
@@ -169,7 +175,9 @@ class CourseManagerContainer extends React.Component {
                                 state={this.state}
                                 selectedRow={this.selectedRow}
                                 editingRow={this.editingRow}
-                                toggle={this.toggle}/>
+                                toggle={this.toggle}
+                                updateForm={this.updateForm}
+                            />
                         }
 
                         {
@@ -181,7 +189,8 @@ class CourseManagerContainer extends React.Component {
                                 state={this.state}
                                 selectedRow={this.selectedRow}
                                 editingRow={this.editingRow}
-                                toggle={this.toggle}/>
+                                toggle={this.toggle}
+                                updateForm={this.updateForm}/>
                         }
 
                     </div>

@@ -4,25 +4,31 @@ import React from "react";
 class CourseRowComponent extends React.Component {
     render() {
         return(
-            <tr className="wbdv-row wbdv-course"
+            <tr className="wbdv-row wbdv-course" onClick={(e) => this.props.selectedRow(this.props.index, e)}
                 style={
                     this.props.state.activeRow === this.props.index
                         ? { background: "#0f64f2", color: 'white' }
                         : { background: 'white' }
                 }
                 >
-                <th className="clickable" onClick={() => this.props.selectedRow(this.props.index)}>
-                    <i className="fas fa-file-alt wbdv-row wbdv-icon"/>
+                <td className="clickable">
+                    <i className="fas fa-file-alt wbdv-row wbdv-icon clickable" onClick={()=>this.props.showEditor(this.props.index)}/>
                     {
                         this.props.state.editingRow !== this.props.index &&
-                        <a onClick={this.props.showEditor} className="wbdv-row wbdv-title clickable"
-                        >{this.props.course.title}</a>
+                        <label className="wbdv-title clickable" onClick={()=>this.props.showEditor(this.props.index)}
+                        >{this.props.course.title}</label>
                     }
                     {this.props.state.editingRow === this.props.index &&
-                    <input className="" id="course-edit" placeholder={this.props.course.title}/>}
-                </th>
-                <td className="wbdv-row wbdv-owner tablecollapseownedby">me</td>
-                <td className="wbdv-row wbdv-modified-date tablecollapselastmodified">11:45 AM</td>
+                    <input  id="course-edit"
+                           onChange={(e) => this.props.updateForm({
+                               newCourseTitle: e.target.value
+                           })}
+                           value={this.props.state.newCourseTitle}/>}
+                </td>
+                <td className="wbdv-row wbdv-owner tablecollapseownedby clickable"
+                    >me</td>
+                <td className="wbdv-row wbdv-modified-date tablecollapselastmodified clickable"
+                   >11:45 AM</td>
 
 
                 <td>

@@ -1,17 +1,17 @@
 import React from "react";
 
-const LessonTabs = ({lessons}) =>
+const LessonTabs = ({hideEditor, course}) =>
     <div className="row">
         <div className="col-12 mycol">
             <ul className="nav nav-tabs nav-fill">
 
                 <li className="nav-item">
                     <li className="navbar-brand">
-                        <a className="wbdv-course-editor wbdv-close">
+                        <a className="wbdv-course-editor wbdv-close" onClick={hideEditor}>
                             <i className="fas fa-times"></i>
                         </a>
                         <a> </a>
-                        <a className="tittle">CS5610-WebDev</a>
+                        <a className="tittle">{course.title}</a>
                     </li>
                 </li>
                 <li className="nav-item">

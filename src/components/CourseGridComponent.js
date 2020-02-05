@@ -3,7 +3,7 @@ import CourseTableHeaderComponent from "./CourseTableHeaderComponent";
 import CourseCardComponent from "./CourseCardComponent";
 
 
-const CourseGridComponent = ({courses, deleteCourse, showEditor, state, selectedRow, editingRow, editRow, toggle, rows, cols}) =>
+const CourseGridComponent = ({courses, deleteCourse, showEditor, state, selectedRow, editingRow, editRow, toggle, updateForm}) =>
     <React.Fragment>
         <table className="table table-hover">
             <CourseTableHeaderComponent
@@ -27,6 +27,7 @@ const CourseGridComponent = ({courses, deleteCourse, showEditor, state, selected
                                         editingRow={editingRow}
                                         index={index}
                                         editRow={editRow}
+                                        updateForm={updateForm}
                                     />
                                 </div>
                             )

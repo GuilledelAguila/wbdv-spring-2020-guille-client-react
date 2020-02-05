@@ -1,24 +1,26 @@
 import React from "react";
 
-const CourseCardComponent = ({course,state,index,deleteCourse,selectedRow,editingRow,editRow,showEditor}) =>
-    <div className="course-Card clickable"
+const CourseCardComponent = ({course,state,index,deleteCourse,selectedRow,editingRow,editRow,showEditor,updateForm}) =>
+    <div className=" course-Card clickable"
          style={
             state.activeRow === index
             ? { background: "#0f64f2", color:"white" }
             : { background: 'white' }
          }
-         onClick={() => selectedRow(index)}
-
+         onClick={(e) => selectedRow(index, e)}
     >
-        <div>
-            <i className="fas fa-file-alt wbdv-row wbdv-icon clickable "  />
+        <div className="clickable" >
+            <i className="fas fa-file-alt wbdv-row wbdv-icon clickable "  onClick={()=>showEditor(index)}/>
             {
                 state.editingRow !== index &&
-                <a onClick={showEditor} className="wbdv-row wbdv-title clickable"
-                >{course.title}</a>
+                <label onClick={()=>showEditor(index)} className="wbdv-row wbdv-title clickable"
+                >{course.title}</label>
             }
             {state.editingRow === index &&
-            <input className="course-edit-card" id="course-edit" placeholder={course.title}/>}
+            <input className="course-edit-card" id="course-edit" onChange={(e) => updateForm({
+                newCourseTitle: e.target.value
+            })}
+                   value={state.newCourseTitle}/>}
 
         </div>
         <div className="clickable wbdv-card-buttons" >

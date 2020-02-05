@@ -3,11 +3,14 @@ import ModuleListComponent from "./ModuleListComponent";
 import LessonTabs from "./LessonTabs";
 import TopicPills from "./TopicPills";
 import WidgetList from "./WidgetList";
-const CourseEditorComponent = ({hideEditor}) =>
+const CourseEditorComponent = ({hideEditor, course}) =>
 
     <div className="container-fluid">
-        <button onClick={hideEditor}>Close</button>
-        <LessonTabs/>
+        <LessonTabs
+            hideEditor={hideEditor}
+            course={course}
+
+        />
         <div className="row last-row">
             <ModuleListComponent/>
             <div className="col-9 mycol">

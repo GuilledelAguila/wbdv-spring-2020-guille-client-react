@@ -20,7 +20,7 @@ const CourseNavComponent = ({state, addCourse, updateForm}) =>
                 onChange={(e) => updateForm({
                     newCourseTitle: e.target.value
                 })}
-                placeholder={state.newCourseTitle}
+                placeholder="New Course Title"
                 id="wbdv-new-course"/>
         </div>
         <div className="col-2">

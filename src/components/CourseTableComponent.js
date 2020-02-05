@@ -2,7 +2,7 @@ import React from "react";
 import CourseRowComponent from "./CourseRowComponent";
 import CourseTableHeaderComponent from "./CourseTableHeaderComponent";
 
-const CourseTableComponent = ({courses, deleteCourse, showEditor, state, selectedRow, editingRow, editRow, toggle}) =>
+const CourseTableComponent = ({courses, deleteCourse, showEditor, state, selectedRow, editingRow, editRow, toggle, updateForm}) =>
     <table className = "table table-hover" >
             <CourseTableHeaderComponent
                 layout={state.layout}
@@ -21,6 +21,7 @@ const CourseTableComponent = ({courses, deleteCourse, showEditor, state, selecte
                             selectedRow={selectedRow}
                             editingRow={editingRow}
                             editRow={editRow}
+                            updateForm={updateForm}
                         />
                     )
                 })
