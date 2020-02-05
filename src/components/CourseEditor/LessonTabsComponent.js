@@ -1,6 +1,6 @@
 import React from "react";
 
-const LessonTabs = ({hideEditor, course}) =>
+const LessonTabsComponent = ({hideEditor, course}) =>
     <div className="row">
         <div className="col-12 mycol">
             <ul className="nav nav-tabs nav-fill">
@@ -55,4 +55,4 @@ const LessonTabs = ({hideEditor, course}) =>
         </div>
     </div>
 
-export default LessonTabs
+export default LessonTabsComponent

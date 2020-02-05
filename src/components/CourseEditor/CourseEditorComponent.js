@@ -1,12 +1,12 @@
 import React from "react";
 import ModuleListComponent from "./ModuleListComponent";
-import LessonTabs from "./LessonTabs";
-import TopicPills from "./TopicPills";
-import WidgetList from "./WidgetList";
+import LessonTabsComponent from "./LessonTabsComponent";
+import TopicPillsComponent from "./TopicPillsComponent";
+import WidgetListComponent from "./WidgetListComponent";
 const CourseEditorComponent = ({hideEditor, course}) =>
 
     <div className="container-fluid">
-        <LessonTabs
+        <LessonTabsComponent
             hideEditor={hideEditor}
             course={course}
 
@@ -14,8 +14,8 @@ const CourseEditorComponent = ({hideEditor, course}) =>
         <div className="row last-row">
             <ModuleListComponent/>
             <div className="col-9 mycol">
-            <TopicPills/>
-            <WidgetList/>
+            <TopicPillsComponent/>
+            <WidgetListComponent/>
             </div>
         </div>
 

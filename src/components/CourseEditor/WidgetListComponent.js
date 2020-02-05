@@ -1,6 +1,6 @@
 import React from "react";
 
-const WidgetList = () =>
+const WidgetListComponent = () =>
     <div className="container">
         <form className="wbdv-topic-form">
             <div className="form-group row justify-content-end">
@@ -64,4 +64,4 @@ const WidgetList = () =>
         </form>
     </div>
 
-export default WidgetList
+export default WidgetListComponent
