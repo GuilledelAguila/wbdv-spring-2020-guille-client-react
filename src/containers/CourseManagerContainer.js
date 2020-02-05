@@ -114,7 +114,7 @@ class CourseManagerContainer extends React.Component {
 
     addCourse = () => {
         createCourse({
-            title: this.state.newCourseTitle
+            title: this.state.newCourseTitle.substring(0, 13)
         }).then(actualCourse => this.setState(prevState => {
                 return ({
                     courses: [
