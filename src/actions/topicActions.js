@@ -30,9 +30,9 @@ export const saveEdit = (newTopicTitle) => ({
     newTopicTitle: newTopicTitle
 })
 
-export const FIND_TOPICS_FOR_COURSE = "FIND_TOPICS_FOR_COURSE";
+export const FIND_TOPICS_FOR_LESSON = "FIND_TOPICS_FOR_LESSON";
 export const findTopicsForLesson = (actualTopics) => ({
-    type: FIND_TOPICS_FOR_COURSE,
+    type: FIND_TOPICS_FOR_LESSON,
     topics: actualTopics
 })
 

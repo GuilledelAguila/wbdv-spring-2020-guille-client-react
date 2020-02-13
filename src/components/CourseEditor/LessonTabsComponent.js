@@ -24,9 +24,7 @@ class LessonTabsComponent extends React.Component {
     }
 
     render(){
-        // this.props.moduleId && console.log(this.props.lessons.lessons)
-        this.props.moduleId && console.log(this.props.moduleId)
-        // this.props.moduleId && this.props.findLessonsForCourse(this.props.moduleId)
+
         return(
 
             <div className="row">
@@ -34,7 +32,12 @@ class LessonTabsComponent extends React.Component {
                     <ul className="nav nav-tabs nav-fill">
                         <li className="nav-item col-3">
                             <li className="navbar-brand">
-                                <Link className="wbdv-course-editor wbdv-close" to={"/"}>
+                                <Link className="wbdv-course-editor wbdv-close"
+                                      to = {this.props.layout === 'grid'
+                                          ? "/grid"
+                                          : "/"
+                                      }
+                                      >
                                     <i className="fas fa-times"></i>
                                 </Link>
                                 <a> </a>

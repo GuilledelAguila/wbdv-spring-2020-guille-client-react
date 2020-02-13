@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer)
 
-const CourseEditorComponent = ({history, courseId, moduleId, lessonId, topicId}) =>
+const CourseEditorComponent = ({history, courseId, moduleId, lessonId, topicId, layout}) =>
     <Provider store={store}>
         <div className="container-fluid">
             <LessonTabsComponent
@@ -26,6 +26,7 @@ const CourseEditorComponent = ({history, courseId, moduleId, lessonId, topicId})
                 courseId={courseId}
                 lessonId={lessonId}
                 moduleId={moduleId}
+                layout={layout}
 
             />
             <div className="row last-row">

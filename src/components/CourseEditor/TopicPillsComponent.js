@@ -81,13 +81,14 @@ class TopicPillsComponent extends React.Component {
 
                     </Link>
                 )}
-
-                <li className="nav-item">
-                    <button className="btn wbdv-topic-add-btn" onClick={() =>
-                        this.props.createTopic(this.props.lessonId)}>
-                        <i className="fas fa-plus"></i>
-                    </button>
-                </li>
+                {this.props.lessonId &&
+                    <li className="nav-item">
+                        <button className="btn wbdv-topic-add-btn" onClick={() =>
+                            this.props.createTopic(this.props.lessonId)}>
+                            <i className="fas fa-plus"></i>
+                        </button>
+                    </li>
+                }
             </ul>
 
         )
