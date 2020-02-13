@@ -18,6 +18,7 @@ class LessonTabsComponent extends React.Component {
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.moduleId !== this.props.moduleId){
+
             this.props.moduleId && this.props.findLessonsForModule(this.props.moduleId)
         }
     }
@@ -31,7 +32,6 @@ class LessonTabsComponent extends React.Component {
             <div className="row">
                 <div className="col-12 mycol">
                     <ul className="nav nav-tabs nav-fill">
-
                         <li className="nav-item col-3">
                             <li className="navbar-brand">
                                 <Link className="wbdv-course-editor wbdv-close" to={"/"}>
@@ -41,70 +41,66 @@ class LessonTabsComponent extends React.Component {
                                 <a className="tittle">{this.props.lessons.coursetitle}</a>
 
                             </li>
-
                         </li>
 
-                            {
-                                this.props.lessons.lessons && this.props.lessons.lessons.map(lesson =>
-                                    this.props.moduleId === lesson._modules &&
-                                    <Link className="nav-item Link" key={lesson._id}
-                                          to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${lesson._id}`}
-                                          style={
-                                              this.props.lessonId === lesson._id
-                                                  ? { background: "#0f64f2", color: 'white' }
-                                                  : {}
-                                          }>
-                                        <li className="nav-link">
+                        {this.props.lessons.lessons && this.props.lessons.lessons.map(lesson =>
+                            this.props.moduleId === lesson._modules &&
+                            <Link className="nav-item Link" key={lesson._id}
+                                  to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${lesson._id}`}
+                                  style={
+                                      this.props.lessonId === lesson._id
+                                          ? { background: "#0f64f2", color: 'white' }
+                                          : {}
+                                  }>
+                                <li className="nav-link">
 
-                                            {(this.props.lessons.editingLesson !== lesson._id ||
-                                                this.props.lessonId !== lesson._id) &&
-                                                lesson.title}
-
+                                    {(this.props.lessons.editingLesson !== lesson._id ||
+                                        this.props.lessonId !== lesson._id) &&
+                                        lesson.title}
 
 
-                                            {this.props.lessons.editingLesson === lesson._id &&
-                                                this.props.lessonId === lesson._id &&
-                                                    <input  id="course-edit" onChange={(e) =>
-                                                    this.props.updateForm(e.target.value)}
-                                                value={this.props.lessons.newLessonTitle}/>
-                                            }
 
-                                            {this.props.lessons.editingLesson === lesson._id &&
-                                            this.props.lessonId === lesson._id &&
-                                            <button className="btn wbdv-module-item-delete-btn"
-                                                    onClick={() => this.props.deleteLesson(lesson._id)}>
-                                                <Link className="btn wbdv-module-item-delete-btn"
-                                                      to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}`}>
-                                                    <i className="fas fa-times"/>
-                                                </Link>
-                                            </button>
-                                            }
+                                    {this.props.lessons.editingLesson === lesson._id &&
+                                        this.props.lessonId === lesson._id &&
+                                            <input  id="course-edit" onChange={(e) =>
+                                            this.props.updateForm(e.target.value)}
+                                        value={this.props.lessons.newLessonTitle}/>
+                                    }
 
-                                            { this.props.lessons.editingLesson === lesson._id &&
-                                            this.props.lessonId === lesson._id &&
-                                            <button className="btn wbdv-row wbdv-button wbdv-save"
-                                                    onClick={() => this.props.saveEdit(lesson, lesson._id, this.props.lessons.newLessonTitle)}>
-                                                <i className="fas fa-check fa-1x wbdv-button wbdv-save"/>
-                                            </button>
-                                            }
+                                    {this.props.lessons.editingLesson === lesson._id &&
+                                    this.props.lessonId === lesson._id &&
+                                    <button className="btn wbdv-module-item-delete-btn"
+                                            onClick={() => this.props.deleteLesson(lesson._id)}>
+                                        <Link className="btn wbdv-module-item-delete-btn"
+                                              to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}`}>
+                                            <i className="fas fa-times"/>
+                                        </Link>
+                                    </button>
+                                    }
 
-                                            {(this.props.lessons.editingLesson !== lesson._id ||
-                                                this.props.lessonId !== lesson._id) &&
-                                            <button className="btn wbdv-row wbdv-button wbdv-edit"
-                                                    onClick={() => this.props.editLesson(lesson._id, lesson.title)}>
-                                                <i className="fas fa-edit fa-1x wbdv-button wbdv-edit"/>
-                                            </button>
-                                            }
+                                    { this.props.lessons.editingLesson === lesson._id &&
+                                    this.props.lessonId === lesson._id &&
+                                    <button className="btn wbdv-row wbdv-button wbdv-save"
+                                            onClick={() => this.props.saveEdit(lesson, lesson._id, this.props.lessons.newLessonTitle)}>
+                                        <i className="fas fa-check fa-1x wbdv-button wbdv-save"/>
+                                    </button>
+                                    }
 
-
-                                        </li>
-                                    </Link>
-
-                                )
-                            }
+                                    {(this.props.lessons.editingLesson !== lesson._id ||
+                                        this.props.lessonId !== lesson._id) &&
+                                    <button className="btn wbdv-row wbdv-button wbdv-edit"
+                                            onClick={() => this.props.editLesson(lesson._id, lesson.title)}>
+                                        <i className="fas fa-edit fa-1x wbdv-button wbdv-edit"/>
+                                    </button>
+                                    }
 
 
-                        { this.props.moduleId &&
+                                </li>
+                            </Link>
+
+                        )}
+
+                        {this.props.moduleId &&
                             <li className="nav-item col-1 wbdv-new-page-btn">
                                 <button className="btn wbdv-module-item-add-btn">
                                 <a className="nav-link wbdv-new-page-btn"

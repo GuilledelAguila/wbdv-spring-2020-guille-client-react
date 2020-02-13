@@ -8,15 +8,17 @@ import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import moduleReducer from "../../reducers/moduleReducer";
 import lessonReducer from "../../reducers/lessonReducer";
+import topicsReducer from "../../reducers/topicReducer";
 
 const rootReducer = combineReducers({
     modules: moduleReducer,
-    lessons: lessonReducer
+    lessons: lessonReducer,
+    topics: topicsReducer
 })
 
 const store = createStore(rootReducer)
 
-const CourseEditorComponent = ({history, courseId, moduleId, lessonId}) =>
+const CourseEditorComponent = ({history, courseId, moduleId, lessonId, topicId}) =>
     <Provider store={store}>
         <div className="container-fluid">
             <LessonTabsComponent
@@ -38,6 +40,7 @@ const CourseEditorComponent = ({history, courseId, moduleId, lessonId}) =>
                     courseId={courseId}
                     lessonId={lessonId}
                     moduleId={moduleId}
+                    topicId={topicId}
                 />
                 <WidgetListComponent/>
                 </div>
