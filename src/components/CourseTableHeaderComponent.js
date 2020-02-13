@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const CourseTableHeaderComponent = ({layout,toggle}) =>
     <thead>
@@ -19,14 +20,14 @@ const CourseTableHeaderComponent = ({layout,toggle}) =>
         <th className="wbdv-header wbdv-last-modified tablecollapselastmodified" scope="col-3">Last Modified by me</th>
         <th scope="col-2">
             {layout === 'table' &&
-                <button className="btn wbdv-button wbdv-grid-layout" onClick={toggle}>
+                <Link className="btn wbdv-button wbdv-grid-layout" onClick={toggle} to={`/grid`}>
                     <i className="fas fa-grip-horizontal"/>
-                </button>
+                </Link>
             }
             {layout=== 'grid' &&
-            <button className="btn wbdv-button wbdv-list-layout" onClick={toggle}>
+            <Link className="btn wbdv-button wbdv-list-layout" onClick={toggle} to={`/table`}>
                 <i className="fas fa-list"/>
-            </button>
+            </Link>
             }
 
             <button className="btn wbdv-header wbdv-button wbdv-sort">

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const CourseCardComponent = ({course,state,index,deleteCourse,selectedRow,editingRow,editRow,showEditor,updateForm}) =>
     <div className=" course-Card clickable"
@@ -13,8 +14,10 @@ const CourseCardComponent = ({course,state,index,deleteCourse,selectedRow,editin
             <i className="fas fa-file-alt wbdv-row wbdv-icon clickable "  onClick={()=>showEditor(index)}/>
             {
                 state.editingRow !== index &&
-                <label onClick={()=>showEditor(index)} className="wbdv-row wbdv-title clickable"
-                >{course.title}</label>
+                <Link className="wbdv-title clickable"  to={`/course-editor/${course._id}`}>
+                    {course.title}
+                </Link>
+
             }
             {state.editingRow === index &&
             <input className="course-edit-card" id="course-edit" onChange={(e) => updateForm({

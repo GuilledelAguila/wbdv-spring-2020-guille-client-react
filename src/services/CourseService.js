@@ -1,4 +1,5 @@
 import {API_URL} from "../constants";
+import {deleteLesson, findLessonForCourse} from "./LessonService";
 
 export const createCourse = (course) =>
     fetch(API_URL, {
@@ -38,3 +39,7 @@ export const updateCourse = (courseId, course) =>
     })
         .then(response => response.json())
 
+export default {
+    createCourse,
+    findCourseById
+}

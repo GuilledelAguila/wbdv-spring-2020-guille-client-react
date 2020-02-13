@@ -70,6 +70,9 @@
   color: white;
   float: right;
 }
+.wbdv-new-page-btn{
+
+}
 .wbdv-button{
   margin-right: 7px;
   margin-bottom: 0;
@@ -168,12 +171,17 @@
   color: white;
   border-radius: 4px;
   font-weight: bold;
+
+  border-width: 0;
+  border-style: hidden;
 }
 
 .nav-link:hover{
   color: white;
-  border: 0px;
-  background-color: #363b3e;
+  border-width: 0;
+  border-style: hidden;
+
+
 }
 
 .navbar-brand{
@@ -224,11 +232,12 @@
   float: right;
   margin-right: 10px;
   color: white;
-  font-size: x-large;
+  padding: 0;
+
 }
 .wbdv-module-item-add-btn:hover{
   color: white;
-  font-size: xx-large;
+
 }
 .wbdv-module-item-delete-btn:hover{
   color: white;
@@ -301,4 +310,9 @@
   border: 0px;
   font-size: xx-large;
   float: right;
+}
+
+.Link:hover{
+  color: white;
+  font-weight: bolder;
 }

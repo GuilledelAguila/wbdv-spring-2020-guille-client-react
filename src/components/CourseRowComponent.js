@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 
 class CourseRowComponent extends React.Component {
@@ -15,8 +16,13 @@ class CourseRowComponent extends React.Component {
                     <i className="fas fa-file-alt wbdv-row wbdv-icon clickable" onClick={()=>this.props.showEditor(this.props.index)}/>
                     {
                         this.props.state.editingRow !== this.props.index &&
-                        <label className="wbdv-title clickable" onClick={()=>this.props.showEditor(this.props.index)}
-                        >{this.props.course.title}</label>
+                        <Link className="wbdv-title clickable"  to={`/course-editor/${this.props.course._id}`}
+                              style={
+                                  this.props.state.activeRow === this.props.index
+                                      ? { background: "#0f64f2", color: 'white' }
+                                      : { background: 'white' }
+                              }
+                        >{this.props.course.title}</Link>
                     }
                     {this.props.state.editingRow === this.props.index &&
                     <input  id="course-edit"
@@ -40,6 +46,7 @@ class CourseRowComponent extends React.Component {
                         <i className="fas fa-trash-alt fa-1x wbdv-button wbdv-delete"/>
                     </button>
                     }
+
                     {this.props.state.activeRow === this.props.index &&
                     this.props.state.editingRow !== this.props.index &&
                         <button className="btn wbdv-row wbdv-button wbdv-edit"
