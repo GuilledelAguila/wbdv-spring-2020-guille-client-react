@@ -162,8 +162,8 @@
 }
 .container-fluid{
   position: absolute;
-  bottom: 0px;
-  top: 0px;
+  bottom: 0;
+  top: 0;
 
 }
 
@@ -273,19 +273,61 @@
 .wbdv-topic-save-btn{
   background-color: green;
   border: 0px;
-  margin-top: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin-left: 20px;
+  font-size: large;
+  padding: 7px;
+  margin-top: 0;
+
+}
+
+.preview-label{
+  font-size: x-large;
+  font-weight: bold;
+  margin: 0;
 }
 .wbdv-topic-toggle-btn{
   background-color: white;
   margin-right: 20px;
   font-size: larger;
   font-weight: bold;
+  float: right;
 }
 .wbdv-widget-btn{
+  float: right;
   margin-left: 10px;
+
 }
+
+ul {
+  list-style-type: none;
+}
+
+.widget-list{
+  padding: 0;
+}
+
+.widget-top-btns{
+  margin: auto;
+  margin-right: 0;
+}
+.widget-container{
+  padding: 10px;
+  border-style: solid;
+  border-color: lightgray;
+  border-radius: 5px;
+
+  margin-bottom: 15px;
+
+}
+
+.widget-container-prev{
+  padding: 10px;
+  border-style: solid;
+  border-color: lightgray;
+  border-radius: 5px;
+  margin: 20px;
+}
+
 .wbdv-widget-btn.wbdv-widget-arrow-up-btn{
   background-color: orange;
   border: 0px;
@@ -309,9 +351,23 @@
   border: 0px;
   font-size: xx-large;
   float: right;
+  padding: 0;
 }
 
+.wbdv-widget-btn{
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+.widget-type-selector{
+  width: 175px;
+  height: 41px;
+}
 .Link:hover{
   color: white;
   font-weight: bolder;
 }
+
+
+
