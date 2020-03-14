@@ -30,8 +30,8 @@ class LessonTabsComponent extends React.Component {
             <div className="row">
                 <div className="col-12 mycol">
                     <ul className="nav nav-tabs nav-fill">
-                        <li className="nav-item col-3">
-                            <li className="navbar-brand">
+                        <li className="nav-item col-3 ">
+                            <div className="navbar-brand">
                                 <Link className="wbdv-course-editor wbdv-close"
                                       to = {this.props.layout === 'grid'
                                           ? "/grid"
@@ -43,7 +43,7 @@ class LessonTabsComponent extends React.Component {
                                 <a> </a>
                                 <a className="tittle">{this.props.lessons.coursetitle}</a>
 
-                            </li>
+                            </div>
                         </li>
 
                         {this.props.lessons.lessons && this.props.lessons.lessons.map(lesson =>

@@ -7,7 +7,7 @@ import widgetService from '../../services/WidgetService';
 class WidgetList extends React.Component {
     componentDidMount() {
         // this.props.findAllWidgets()
-        this.props.findWidgetsForTopic(this.props.topicId).then()
+        this.props.topicId && this.props.findWidgetsForTopic(this.props.topicId)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -38,7 +38,6 @@ class WidgetList extends React.Component {
                 widget: widget
             }
         })
-        console.log(widget)
     }
 
     moveUp = (widget) =>
@@ -67,28 +66,32 @@ class WidgetList extends React.Component {
 
             <ul className="widget-list">
                 <div className="row">
-                <form className="wbdv-topic-form widget-top-btns">
-                        <button className="btn wbdv-topic-toggle-btn wbdv-widget-btn">Preview  <i className="fas fa-toggle-on"> </i>
-                        </button>
-                        <button className="btn btn-primary wbdv-widget-add-btn wbdv-widget-btn"
-                                onClick={() =>
-                                    this.props.createWidget(
-                                        this.props.topicId,
-                                        {
-                                            text: "New Widget Content",
-                                            name: "New Widget Name"
-                                        })}>
-                            <i className="fas fa-plus-circle"></i>
-                        </button>
-                </form>
+                    { this.props.topicId &&
+                        <form className="wbdv-topic-form widget-top-btns">
+                            <button className="btn wbdv-topic-toggle-btn wbdv-widget-btn">Preview <i
+                                className="fas fa-toggle-on"> </i>
+                            </button>
+                            <button className="btn btn-primary wbdv-widget-add-btn wbdv-widget-btn"
+                                    onClick={() =>
+                                        this.props.createWidget(
+                                            parseInt(this.props.topicId),
+                                            {
+                                                widgetOrder: this.props.widgets.length,
+                                                size: 2,
+                                                text: "New Widget Content",
+                                                name: "New Widget Name"
+                                            })}>
+                                <i className="fas fa-plus-circle"></i>
+                            </button>
+                        </form>
+                    }
                 </div>
                 {
                     this.props.widgets && this.props.widgets.map(widget =>
-
+                        this.props.topicId &&
                         <li key={widget.id}>
                             {this.state.widget.id === widget.id &&
                         <div className="container widget-container">
-                            {console.log(this.state.widget)}
                             <form className="wbdv-topic-form">
 
                             {
@@ -129,9 +132,7 @@ class WidgetList extends React.Component {
                                             onClick={() =>{
                                                 this.setState({
                                                     widget: widget
-                                                })
-                                                console.log(this.state.widget)
-                                            }
+                                                })}
                                             }>
                                         <i className="fas fa-edit fa-1x "/>
                                     </button>
@@ -202,9 +203,7 @@ const dispatcherToPropertyMapper = (dispatch) => ({
             .then(actualWidget => {dispatch({
                 type: "CREATE_WIDGET",
                 widget: actualWidget
-            })
-            console.log(actualWidget)
-            }
+            })}
 
             ),
 

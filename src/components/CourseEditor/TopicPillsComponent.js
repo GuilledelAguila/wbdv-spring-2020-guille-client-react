@@ -7,11 +7,6 @@ import topicService from '../../services/TopicService';
 
 
 
-
-
-
-
-
 class TopicPillsComponent extends React.Component {
     componentDidMount() {
         this.props.lessonId && this.props.findTopicsForLesson(this.props.lessonId)
@@ -28,32 +23,33 @@ class TopicPillsComponent extends React.Component {
 
             <ul className="nav nav-pills wbdv-topic-pill-list">
                 {this.props.topics.topics && this.props.topics.topics.map(topic =>
-                    this.props.lessonId === topic._lessons &&
+                    this.props.lessonId === topic.lessonId &&
 
-                    <Link className="nav-item Link" key={topic._id}
-                          to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${topic._id}`}
+                    <Link className="nav-item Link" key={topic.id}
+                          to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${topic.id}`}
                           >
                         <li className="nav-link wbdv-topic-pill" href="#"
                             style={
-                               this.props.topicId === topic._id
+                                parseInt(this.props.topicId) === topic.id
                                    ? { background: "#0f64f2", color: 'white' }
                                    : {}
                             }>
 
-                            {(this.props.topics.editingTopic !== topic._id ||
-                                this.props.topicId !== topic._id) && topic.title}
 
-                            {this.props.topics.editingTopic === topic._id &&
-                            this.props.topicId === topic._id &&
+                            {(this.props.topics.editingTopic !== topic.id ||
+                                parseInt(this.props.topicId) !== topic.id) && topic.title}
+
+                            { this.props.topics.editingTopic === topic.id &&
+                            parseInt(this.props.topicId) === topic.id &&
                             <input  id="course-edit" onChange={(e) =>
                                 this.props.updateForm(e.target.value)}
                                     value={this.props.topics.newTopicTitle}/>
                             }
 
-                            {this.props.topics.editingTopic === topic._id &&
-                            this.props.topicId === topic._id &&
+                            {this.props.topics.editingTopic === topic.id &&
+                            parseInt(this.props.topicId) === topic.id &&
                             <button className="btn wbdv-module-item-delete-btn"
-                                    onClick={() => this.props.deleteTopic(topic._id)}>
+                                    onClick={() => this.props.deleteTopic(topic.id)}>
                                 <Link className="btn wbdv-module-item-delete-btn"
                                       to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}`}>
                                     <i className="fas fa-times"/>
@@ -61,18 +57,18 @@ class TopicPillsComponent extends React.Component {
                             </button>
                             }
 
-                            { this.props.topics.editingTopic === topic._id &&
-                            this.props.topicId === topic._id &&
+                            { this.props.topics.editingTopic === topic.id &&
+                            parseInt(this.props.topicId) === topic.id &&
                             <button className="btn wbdv-row wbdv-button wbdv-save"
-                                    onClick={() => this.props.saveEdit(topic, topic._id, this.props.topics.newTopicTitle)}>
+                                    onClick={() => this.props.saveEdit(topic, topic.id, this.props.topics.newTopicTitle)}>
                                 <i className="fas fa-check fa-1x wbdv-button wbdv-save"/>
                             </button>
                             }
 
-                            {(this.props.topics.editingTopic !== topic._id ||
-                                this.props.topicId !== topic._id) &&
+                            {(this.props.topics.editingTopic !== topic.id ||
+                                parseInt(this.props.topicId) !== topic.id) &&
                             <button className="btn wbdv-row wbdv-button wbdv-edit"
-                                    onClick={() => this.props.editTopic(topic._id, topic.title)}>
+                                    onClick={() => this.props.editTopic(topic.id, topic.title)}>
                                 <i className="fas fa-edit fa-1x wbdv-button wbdv-edit"/>
                             </button>
                             }
@@ -111,7 +107,11 @@ const dispatchToPropertyMapper = (dispatch) => {
         ,
         findTopicsForLesson: (lessonId) =>
             topicService.findTopicsForLesson(lessonId)
-                .then(actualTopics => dispatch(findTopicsForLesson(actualTopics))),
+                .then(actualTopics =>
+                    dispatch(findTopicsForLesson(actualTopics))
+                )
+
+        ,
         updateForm: (newTopicTitle) => {
             dispatch(updateForm(newTopicTitle))
         }

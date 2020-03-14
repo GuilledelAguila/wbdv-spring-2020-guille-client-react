@@ -4,6 +4,7 @@ class HeadingWidget extends React.Component {
     state = {
         widget: this.props.widget
     }
+
     render() {
         return(
             <React.Fragment>
@@ -18,14 +19,14 @@ class HeadingWidget extends React.Component {
 
                                 <button className="btn btn-primary wbdv-widget-arrow-up-btn wbdv-widget-btn"
                                         onClick={() =>{
-                                            this.state.widget.order = this.state.widget.order-1
+                                            this.state.widget.widgetOrder = this.state.widget.widgetOrder-1
                                             this.props.moveUp(this.state.widget)}}>
 
                                     <i className="fas fa-arrow-up"></i>
                                 </button>
                                 <button className="btn btn-primary wbdv-widget-arrow-up-btn wbdv-widget-btn"
                                         onClick={() =>{
-                                    this.state.widget.order = this.state.widget.order+1
+                                    this.state.widget.widgetOrder = this.state.widget.widgetOrder+1
                                     this.props.moveUp(this.state.widget)}}>
                                     <i className="fas fa-arrow-down"></i>
                                 </button>
@@ -110,8 +111,9 @@ class HeadingWidget extends React.Component {
                 <div className="form-group">
                 <label className="preview-label">Preview</label>
                 <button className="btn btn-primary btn-inline wbdv-topic-save-btn"
-                        onClick={() =>
-                            this.props.save(this.state.widget)}>
+                        onClick={() =>{
+                            this.props.save(this.state.widget)
+                        }}>
                     Save
                 </button>
                 </div>

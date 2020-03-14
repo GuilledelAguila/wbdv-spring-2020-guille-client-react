@@ -25,7 +25,7 @@ class ModuleListComponent extends React.Component {
                               }>
                             { (this.props.modules.editingModule !== module._id ||
                                 this.props.moduleId !== module._id) &&
-                                <a className="wbdv-module-item-title">{module.title}</a>
+                                <span className="wbdv-module-item-title">{module.title}</span>
                             }
                             { this.props.modules.editingModule === module._id &&
                                 this.props.moduleId === module._id &&

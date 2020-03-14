@@ -1,19 +1,19 @@
 import {API_URL} from "../constants";
 
 export const findTopicsForLesson = (lessonId) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/guille/lessons/${lessonId}/topics`)
+    fetch(`http://localhost:8080/api/lessons/${lessonId}/topics`)
         .then(response => response.json())
 
 
 export const deleteTopic = (topicId) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/guille/topics/${topicId}`, {
+    fetch(`http://localhost:8080/api/topics/${topicId}`, {
         method: "DELETE"
     })
         .then(response => response.json())
 
 
 export const updateTopic = (topicId, topic) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/guille/topics/${topicId}`, {
+    fetch(`http://localhost:8080/api/topics/${topicId}`, {
         method: 'PUT',
         body: JSON.stringify(topic),
         headers: {
@@ -23,9 +23,9 @@ export const updateTopic = (topicId, topic) =>
         .then(response => response.json())
 
 export const createTopic = (lessonId) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/guille/lessons/${lessonId}/topics`, {
+    fetch(`http://localhost:8080/api/lessons/${lessonId}/topics`, {
         method: "POST",
-        body: JSON.stringify({title: "New Topic"}),
+        body: JSON.stringify({lessonId: lessonId, title: "New Topic"}),
         headers: {
             'content-type': 'application/json'
         }
