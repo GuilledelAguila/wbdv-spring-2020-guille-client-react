@@ -45,6 +45,8 @@ class HeadingWidget extends React.Component {
                                         value={this.state.widget.type}>
                                     <option value="HEADING">Heading</option>
                                     <option value="PARAGRAPH">Paragraph</option>
+                                    <option value="IMAGE">Image</option>
+                                    <option value="LIST">List</option>
                                 </select>
 
                                 <button className="btn btn-primary wbdv-widget-cross-btn wbdv-widget-btn"

@@ -1,9 +1,10 @@
 import React from "react";
 
-class ParagraphWidget extends React.Component {
+class HeadingWidget extends React.Component {
     state = {
         widget: this.props.widget
     }
+
     render() {
         return(
             <React.Fragment>
@@ -18,14 +19,14 @@ class ParagraphWidget extends React.Component {
 
                             <button className="btn btn-primary wbdv-widget-arrow-up-btn wbdv-widget-btn"
                                     onClick={() =>{
-                                        this.state.widget.order = this.state.widget.order-1
+                                        this.state.widget.widgetOrder = this.state.widget.widgetOrder-1
                                         this.props.moveUp(this.state.widget)}}>
 
                                 <i className="fas fa-arrow-up"></i>
                             </button>
                             <button className="btn btn-primary wbdv-widget-arrow-up-btn wbdv-widget-btn"
                                     onClick={() =>{
-                                        this.state.widget.order = this.state.widget.order+1
+                                        this.state.widget.widgetOrder = this.state.widget.widgetOrder+1
                                         this.props.moveUp(this.state.widget)}}>
                                 <i className="fas fa-arrow-down"></i>
                             </button>
@@ -36,7 +37,7 @@ class ParagraphWidget extends React.Component {
                                         this.setState(prevState => ({
                                             widget: {
                                                 ...prevState.widget,
-                                                type: newType,
+                                                type: newType
                                             }
                                         }))
                                         this.props.typeChanged(this.state.widget)
@@ -68,7 +69,29 @@ class ParagraphWidget extends React.Component {
                                        }))
                                    }
                                    }
-                                   value={this.state.widget.text}/>
+                                      value={this.state.widget.text}
+                                    placeholder="Enter one list item per line">
+                                {this.state.widget.text.split(/\r\n|\r|\n/).map(line => line)}
+                            </textarea>
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <div className="col">
+                            <select className="form-control wbdv-field wbdv-topic-heading-1"
+                                    onChange={(e) => {
+                                        const newListOrder = e.target.value
+                                        this.setState(prevState => ({
+                                            widget: {
+                                                ...prevState.widget,
+                                                style: newListOrder
+                                            }
+                                        }))
+                                    }}
+                                    value={this.state.widget.style}>
+                                <option value="UNORDERED">Unordered list</option>
+                                <option value="ORDERED">Ordered list</option>
+
+                            </select>
                         </div>
                     </div>
 
@@ -90,8 +113,9 @@ class ParagraphWidget extends React.Component {
                     <div className="form-group">
                         <label className="preview-label">Preview</label>
                         <button className="btn btn-primary btn-inline wbdv-topic-save-btn"
-                                onClick={() =>
-                                    this.props.save(this.state.widget)}>
+                                onClick={() =>{
+                                    this.props.save(this.state.widget)
+                                }}>
                             Save
                         </button>
                     </div>
@@ -99,11 +123,25 @@ class ParagraphWidget extends React.Component {
                 }
 
                 {
-                    <p className="widget-display">
-                        {this.state.widget.text}
-                    </p>
 
+                    <div>
+                        {this.state.widget.style === "ORDERED" &&
+                            <ol>
+                                {this.state.widget.text.split(/\r\n|\r|\n/).map(line =>
+                                    <li>{line}</li>
+                                )}
 
+                            </ol>
+                        }
+                        {this.state.widget.style === "UNORDERED" &&
+                            <ul style={{listStyleType: "circle"}}>
+                                {this.state.widget.text.split(/\r\n|\r|\n/).map(line =>
+                                    <li>{line}</li>
+                                )}
+
+                            </ul>
+                        }
+                    </div>
                 }
             </React.Fragment>
 
@@ -114,4 +152,4 @@ class ParagraphWidget extends React.Component {
     }
 }
 
-export default ParagraphWidget
+export default HeadingWidget

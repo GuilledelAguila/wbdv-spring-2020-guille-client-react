@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import HeadingWidget from "./widgets/HeadingWidget";
 import ParagraphWidget from "./widgets/ParagraphWidget";
 import widgetService from '../../services/WidgetService';
+import ImageWidget from "./widgets/ImageWidget";
+import ListWidget from "./widgets/ListWidget";
 
 class WidgetList extends React.Component {
     componentDidMount() {
@@ -119,6 +121,30 @@ class WidgetList extends React.Component {
                                     moveUp={this.moveUp}
                                 />
                             }
+                            {
+                                widget.type === "IMAGE" &&
+                                <ImageWidget
+                                    save={this.save}
+                                    editing={widget.id === this.state.widget.id}
+                                    widget={widget}
+                                    deleteWidget={this.props.deleteWidget}
+                                    typeChanged={this.typeChanged}
+                                    moveDown={this.moveDown}
+                                    moveUp={this.moveUp}
+                                />
+                            }
+                            {
+                                widget.type === "LIST" &&
+                                <ListWidget
+                                    save={this.save}
+                                    editing={widget.id === this.state.widget.id}
+                                    widget={widget}
+                                    deleteWidget={this.props.deleteWidget}
+                                    typeChanged={this.typeChanged}
+                                    moveDown={this.moveDown}
+                                    moveUp={this.moveUp}
+                                />
+                            }
 
 
                             </form>
@@ -161,8 +187,42 @@ class WidgetList extends React.Component {
                                         editing={widget.id === this.state.widget.id}
                                         widget={widget}
                                     />
-
-
+                                </div>
+                            }
+                            {
+                                this.state.widget.id !== widget.id &&
+                                widget.type === "IMAGE" &&
+                                <div className="container widget-container">
+                                    <button className="btn wbdv-widget-btn"
+                                            onClick={() =>
+                                                this.setState({
+                                                    widget: widget
+                                                })}>
+                                        <i className="fas fa-edit fa-1x "/>
+                                    </button>
+                                    <ImageWidget
+                                        save={this.save}
+                                        editing={widget.id === this.state.widget.id}
+                                        widget={widget}
+                                    />
+                                </div>
+                            }
+                            {
+                                this.state.widget.id !== widget.id &&
+                                widget.type === "LIST" &&
+                                <div className="container widget-container">
+                                    <button className="btn wbdv-widget-btn"
+                                            onClick={() =>
+                                                this.setState({
+                                                    widget: widget
+                                                })}>
+                                        <i className="fas fa-edit fa-1x "/>
+                                    </button>
+                                    <ListWidget
+                                        save={this.save}
+                                        editing={widget.id === this.state.widget.id}
+                                        widget={widget}
+                                    />
                                 </div>
                             }
                         </li>
